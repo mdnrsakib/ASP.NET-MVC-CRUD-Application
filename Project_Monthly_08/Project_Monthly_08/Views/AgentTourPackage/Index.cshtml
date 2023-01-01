@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Project_Monthly_08.Models.TravelAgent>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <div class="col-12">
+        <h3>Agent Info</h3>
+        <div class="d-flex justify-content-end mb-1">
+            @Html.ActionLink("Create New", "CreateAgentTourPackage", new { }, new { @class = "btn btn-primary btn-sm" })
+        </div>
+        <table class="table table-bordered">
+            <thead class="bg-light">
+                <tr>
+
+                    <th>@Html.DisplayNameFor(t => t.AgentName)</th>
+                    <th>@Html.DisplayNameFor(t => t.Email)</th>
+                    <th>@Html.DisplayNameFor(t => t.AgentAddress)</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(t => x.AgentName)</td>
+                        <td>@Html.DisplayFor(t => x.Email)</td>
+                        <td>@Html.DisplayFor(t => x.AgentAddress)</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="border-end-0">&nbsp;</td>
+                        <td colspan="6" class="border-start-0">
+                            <h4>Agent Packages</h4>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Package Name</th>
+                                        <th>Cost Per Person</th>
+                                        <th>Tour Time</th>
+                                    </tr>
+
+                                </thead>
+                                @foreach (var y in x.AgentTourPackages)
+                                {
+                                    <tr>
+                                        <td>@y.TourPackage.PackageName</td>
+                                        <td>@y.TourPackage.CostPerPerson</td>
+                                        <td>@y.TourPackage.TourTime</td>
+                                    </tr>
+                                }
+                            </table>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

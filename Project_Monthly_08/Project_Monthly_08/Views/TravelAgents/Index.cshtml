@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Project_Monthly_08.Models.TravelAgent>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <div class="col-12">
+        <h3>Travel Agents</h3>
+        <div class="d-flex justify-content-end mb-1">
+            @Html.ActionLink("Add new", "Create", "TravelAgents", new { }, new { @class = "btn btn-primary btn-sm" })
+        </div>
+        <table class="table table-bordered">
+            <thead class="bg-light">
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.AgentName)</th>
+                    <th>@Html.DisplayNameFor(x => x.Email)</th>
+                    <th>@Html.DisplayNameFor(x => x.AgentAddress)</th>                  
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var t in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(x => t.AgentName)</td>
+                        <td>@Html.DisplayFor(x => t.Email)</td>
+                        <td>@Html.DisplayFor(x => t.AgentAddress)</td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", "TravelAgents", new { id = t.TravelAgentId }, new { @class = "btn btn-secondary btn-sm" })
+                            <a href="@Url.Action("Delete", "TravelAgents", new {id=t.TravelAgentId})" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

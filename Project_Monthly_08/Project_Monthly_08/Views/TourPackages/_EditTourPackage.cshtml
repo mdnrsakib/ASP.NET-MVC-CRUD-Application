@@ -1,0 +1,49 @@
+﻿@model Project_Monthly_08.Models.TourPackage
+@using (Ajax.BeginForm("EditTourPackage", "TourPackages", new { }, new AjaxOptions
+{
+    HttpMethod = "Post",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "alert",
+    OnSuccess = "onSuccess",
+    LoadingElementId = "spinner"
+}, new { id = "f" }))
+{
+    @Html.HiddenFor(x => x.TourPackageId)
+    <div class="form-group row mb-1">
+        @Html.LabelFor(x => x.PackageName, new { @class = "col-form-label col-form-label-sm col-2" })
+        <div class="col-4">
+            @Html.TextBoxFor(x => x.PackageName, new { @class = "form-control form-control-sm" })
+            @Html.ValidationMessageFor(x => x.PackageName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row mb-1">
+        @Html.LabelFor(x => x.PackageCategory, new { @class = "col-form-label col-form-label-sm col-2" })
+        <div class="col-4">
+            @Html.EnumDropDownListFor(x => x.PackageCategory, new { @class = "form-select form-select-sm" })
+            @Html.ValidationMessageFor(x => x.PackageCategory, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row mb-1">
+        @Html.LabelFor(x => x.CostPerPerson, new { @class = "col-form-label col-form-label-sm col-2" })
+        <div class="col-4">
+            @Html.TextBoxFor(x => x.CostPerPerson, new { @class = "form-control form-control-sm" })
+            @Html.ValidationMessageFor(x => x.CostPerPerson, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row mb-1">
+        @Html.LabelFor(x => x.TourTime, new { @class = "col-form-label col-form-label-sm col-2" })
+        <div class="col-4">
+            @Html.TextBoxFor(x => x.TourTime, new { @class = "form-control form-control-sm" })
+            @Html.ValidationMessageFor(x => x.TourTime, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row mb-1">
+        <div class="col-4 offset-2">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </div>
+}
+
+
+
+

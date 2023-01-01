@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Project_Monthly_08.Models.Tourist>
+  @{  ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <div class="col-12">
+        <h2>Tourists</h2>
+        <div class="d-flex justify-content-end mb-1">
+            @Html.ActionLink("Add new", "Create", "Tourists", new { }, new { @class = "btn btn-primary btn-sm" })
+        </div>
+        <table class="table table-bordered">
+            <thead class="bg-light">
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.TouristName)</th>
+                    <th></th>
+                    <th>@Html.DisplayNameFor(x => x.BookingDate)</th>
+                    <th>@Html.DisplayNameFor(x => x.TouristOccupation)</th>
+                    <th>@Html.DisplayNameFor(x => x.TourPackage.PackageName)</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var t in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(x => t.TouristName)</td>
+                        <td><img src="~/Assets/@t.TouristPicture" class="rounded-circle" style="width:50px" /></td>
+                        <td>@Html.DisplayFor(x => t.BookingDate)</td>
+                        <td>@Html.DisplayFor(x => t.TouristOccupation)</td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", "Tourists", new { id = t.TouristId }, new { @class = "btn btn-secondary btn-sm" })
+                            <a href="@Url.Action("Delete", "Tourists", new {id=t.TouristId })" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

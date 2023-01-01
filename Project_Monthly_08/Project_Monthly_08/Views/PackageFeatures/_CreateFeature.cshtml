@@ -1,0 +1,46 @@
+﻿@model Project_Monthly_08.Models.PackageFeature
+@using (Ajax.BeginForm("CreateFeature", "PackageFeatures", new { }, new AjaxOptions
+{
+    HttpMethod = "Post",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "alert",
+    OnSuccess = "onSuccess",
+    LoadingElementId = "spinner"
+}, new { id = "f" }))
+{
+    <div class="form-group row mb-1">
+        @Html.LabelFor(x => x.TourPackage, new { @class = "col-form-label col-form-label-sm col-2" })
+        <div class="col-4">
+            @Html.DropDownListFor(x => x.TourPackageId, new SelectList(ViewBag.TourPackage, "TourPackageId", "PackageName"), "Select", new { @class = "form-select form-select-sm" })
+            @Html.ValidationMessageFor(x => x.TourPackageId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row mb-1">
+        @Html.LabelFor(x => x.TransportMode, new { @class = "col-form-label col-form-label-sm col-2" })
+        <div class="col-4">
+            @Html.EnumDropDownListFor(x => x.TransportMode, new { @class = "form-select form-select-sm" })
+            @Html.ValidationMessageFor(x => x.TransportMode, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row mb-1">
+        @Html.LabelFor(x => x.HotelBooking, new { @class = "col-form-label col-form-label-sm col-2" })
+        <div class="col-4">
+            @Html.TextBoxFor(x => x.HotelBooking, new { @class = "form-control form-control-sm" })
+            @Html.ValidationMessageFor(x => x.HotelBooking, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row mb-1">
+        @Html.LabelFor(x => x.Status, new { @class = "col-form-label col-form-label-sm col-2" })
+        <div class="col-4">
+            @Html.CheckBoxFor(x => x.Status, new { @class = "form-check" })
+            @Html.ValidationMessageFor(x => x.HotelBooking, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row mb-1">
+        <div class="col-4 offset-2">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </div>
+}
+
+

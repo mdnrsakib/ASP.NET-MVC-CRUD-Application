@@ -1,0 +1,8 @@
+﻿@model Project_Monthly_08.Models.AgentTourPackage
+<div class="form-group row mb-1">
+    @Html.LabelFor(x => x.TourPackage, new { @class = "col-form-label col-2" })
+    <div class="col-4">
+        @Html.DropDownListFor(x => x.TourPackageId, new SelectList(ViewBag.TourPackages, "TourPackageId", "PackageName"), "Select", new { @class = "form-select select" })
+        @Html.ValidationMessageFor(x => x.TourPackageId, "", new { @class = "text-danger" })
+    </div>
+</div>

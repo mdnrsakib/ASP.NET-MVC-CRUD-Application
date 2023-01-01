@@ -1,0 +1,49 @@
+﻿@model Project_Monthly_08.Models.Tourist
+@{
+    ViewBag.Title = "Delete";
+}
+<div class="row">
+    <div class="col-12">
+        <h3>Confirm Delete</h3>
+        <div class="form-group row mb-1">
+            @Html.LabelFor(x => x.TouristName, new { @class = "col-form-label col-form-label-sm col-2" })
+            <div class="col-4">
+                @Html.DisplayFor(x => x.TouristName)
+            </div>
+        </div>
+        <div class="form-group row mb-1">
+            @Html.LabelFor(x => x.BookingDate, new { @class = "col-form-label col-form-label-sm col-2" })
+            <div class="col-4">
+                @Html.DisplayFor(x => x.BookingDate)
+
+            </div>
+        </div>
+        <div class="form-group row mb-1">
+            @Html.LabelFor(x => x.TouristOccupation, new { @class = "col-form-label col-form-label-sm col-2" })
+            <div class="col-4">
+                @Html.DisplayFor(x => x.TouristOccupation)
+            </div>
+        </div>
+        <div class="form-group row mb-1">
+            @Html.LabelFor(x => x.TouristPicture, new { @class = "col-form-label col-form-label-sm col-2" })
+            <div class="col-1">
+                <img src="~/Assets/@Model.TouristPicture" class="img-thumbnail" style="width:50px" />
+            </div>
+        </div>
+        <div class="form-group row mb-1">
+            @Html.LabelFor(x => x.TourPackage, new { @class = "col-form-label col-form-label-sm col-2" })
+            <div class="col-4">
+                @Html.DisplayFor(x => x.TourPackage.PackageName)
+            </div>
+        </div>
+        @using (Html.BeginForm("Delete", "Tourists", new { id = Model.TouristId }, FormMethod.Post))
+        {
+            <div class="col-4 offset-2">
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </div>
+        }
+    </div>
+</div>
+<div class="col-12">
+    @Html.ActionLink("Back to list", "Index")
+</div>

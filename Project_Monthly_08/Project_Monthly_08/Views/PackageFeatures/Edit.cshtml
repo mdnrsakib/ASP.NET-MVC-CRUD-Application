@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div id="alert"></div>
+        <button id="spinner" class="btn btn-primary" type="button" style="display:none">
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Loading...
+        </button>
+    </div>
+    <div class="col-12">
+        <h3>Edit Agents</h3>
+        @Html.Action("EditFeature", new { id = ViewBag.Id })
+    </div>
+    <div class="col-12">
+        @Html.ActionLink("Back to list", "Index")
+    </div>
+</div>
+@section styles{
+    <link href="~/Content/bootstrap-datepicker.standalone.css" rel="stylesheet" />
+}
+@section scripts{
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+    <script>
+        function onSuccess() {
+            $("#f").trigger('reset');
+        }
+    </script>
+}
+

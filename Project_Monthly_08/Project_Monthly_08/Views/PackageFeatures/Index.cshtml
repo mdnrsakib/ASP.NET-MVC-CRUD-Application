@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Project_Monthly_08.Models.PackageFeature>
+@{ ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <div class="col-12">
+        <h2>Features</h2>
+        <div class="d-flex justify-content-end mb-1">
+            @Html.ActionLink("Add new", "Create", "PackageFeatures", new { }, new { @class = "btn btn-primary btn-sm" })
+        </div>
+        <table class="table table-bordered">
+            <thead class="bg-light">
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.TourPackage.PackageName)</th>
+                    <th>@Html.DisplayNameFor(x => x.TransportMode)</th>
+                    <th>@Html.DisplayNameFor(x => x.HotelBooking)</th>
+                    <th>@Html.DisplayNameFor(x => x.Status)</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var t in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(x => t.TourPackage.PackageName)</td>
+                        <td>@Html.DisplayFor(x => t.TransportMode)</td>
+                        <td>@Html.DisplayFor(x => t.HotelBooking)</td>
+                        <td>@Html.DisplayFor(x => t.Status)</td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", "PackageFeatures", new { id = t.PackageFeatureId }, new { @class = "btn btn-secondary btn-sm" })
+                            <a href="@Url.Action("Delete", "PackageFeatures", new {id=t.PackageFeatureId })" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

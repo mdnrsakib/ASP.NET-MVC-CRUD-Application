@@ -1,0 +1,71 @@
+﻿@model Project_Monthly_08.TouristsViewModels.InputModel
+@{
+    ViewBag.Title = "Create";
+}
+<div class="row">
+    <div class="col-12">
+        <h3>Add new Teacher</h3>
+        @using (Html.BeginForm("Create", "Tourists", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="form-group row mb-1">
+                @Html.LabelFor(x => x.TouristName, new { @class = "col-form-label col-form-label-sm col-2" })
+                <div class="col-4">
+                    @Html.TextBoxFor(x => x.TouristName, new { @class = "form-control form-control-sm" })
+                    @Html.ValidationMessageFor(x => x.TouristName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row mb-1">
+                @Html.LabelFor(x => x.BookingDate, new { @class = "col-form-label col-form-label-sm col-2" })
+                <div class="col-4">
+                    @Html.TextBoxFor(x => x.BookingDate, new { @class = "form-control form-control-sm date" })
+                    @Html.ValidationMessageFor(x => x.BookingDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row mb-1">
+                @Html.LabelFor(x => x.TouristOccupation, new { @class = "col-form-label col-form-label-sm col-2" })
+                <div class="col-4">
+                    @Html.TextBoxFor(x => x.TouristOccupation, new { @class = "form-control form-control-sm" })
+                    @Html.ValidationMessageFor(x => x.TouristOccupation, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row mb-1">
+                @Html.LabelFor(x => x.TouristPicture, new { @class = "col-form-label col-form-label-sm col-2" })
+                <div class="col-4">
+                    @Html.TextBoxFor(x => x.TouristPicture, new { @class = "form-control form-control-sm", type = "file" })
+                    @Html.ValidationMessageFor(x => x.TouristPicture, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row mb-1">
+                @Html.LabelFor(x => x.TourPackageId, new { @class = "col-form-label col-form-label-sm col-2" })
+                <div class="col-4">
+                    @Html.DropDownListFor(x => x.TourPackageId, new SelectList(ViewBag.TourPackage, "TourPackageId", "PackageName"), "Select", new { @class = "form-select form-select-sm" })
+                    @Html.ValidationMessageFor(x => x.TourPackageId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row mb-1">
+                <div class="col-4 offset-2">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div class="col-12">
+    @Html.ActionLink("Back to list", "Index")
+</div>
+@section styles{
+
+    <link href="~/Content/bootstrap-datepicker.standalone.css" rel="stylesheet" />
+}
+@section scripts{
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+    <script>
+        $(".date").datepicker({
+            format: "yyyy-mm-dd"
+        });
+    </script>
+}
+

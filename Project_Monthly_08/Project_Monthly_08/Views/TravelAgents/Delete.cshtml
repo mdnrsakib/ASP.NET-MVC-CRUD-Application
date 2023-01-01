@@ -1,0 +1,44 @@
+﻿@model Project_Monthly_08.Models.TravelAgent
+@{
+    ViewBag.Title = "Delete";
+}
+<div class="row">
+    <div class="col-12">
+        <h3>Confirm Delete</h3>
+    </div>
+    <div class="form-group row mb-1">
+        @Html.LabelFor(x => x.AgentName, new { @class = "col-form-label col-form-label-sm col-2" })
+        <div class="col-4">
+            @Html.DisplayFor(x => x.AgentName, new { @class = "form-control form-control-sm" })
+            
+        </div>
+    </div>
+    <div class="form-group row mb-1">
+        @Html.LabelFor(x => x.Email, new { @class = "col-form-label col-form-label-sm col-2" })
+        <div class="col-4">
+            @Html.DisplayFor(x => x.Email, new { @class = "form-control form-control-sm" })
+            
+        </div>
+    </div>
+    <div class="form-group row mb-1">
+        @Html.LabelFor(x => x.AgentAddress, new { @class = "col-form-label col-form-label-sm col-2" })
+        <div class="col-4">
+            @Html.DisplayFor(x => x.AgentAddress, new { @class = "form-control form-control-sm" })
+            
+        </div>
+    </div>
+    <div class="form-group row mb-1">
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(x => x.TravelAgentId)
+
+            <div class="col-4 offset-2">
+                <button type="submit" class="btn btn-danger">Confirm Delete</button>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+
